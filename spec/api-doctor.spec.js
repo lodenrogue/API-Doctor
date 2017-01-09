@@ -40,16 +40,13 @@ describe('Api Doctor', function() {
 	});
 
 	describe('when getting status', function() {
-
-		const TIMEOUT_LENGTH = 1000;
+		
 		let response;
 
 		beforeEach(function(done) {
 			apiDoc.getStatus(config, function(resp) {
-				setTimeout(function() {
-					response = resp;
-					done();
-				}, TIMEOUT_LENGTH);
+				response = resp;
+				done();
 			});
 		})
 

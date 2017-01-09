@@ -27,13 +27,19 @@ function ApiDoctor(configFile) {
 	}
 
 	function checkStatus(api) {
+		let deferred = new $.Deferred();
+
 		$.get(api.url)
 			.done(function(data, statusText, xhr) {
 				api.status = xhr.status;
+				deferred.resolve();
 			})
 			.fail(function(data) {
 				api.status = data.status;
+				deferred.resolved();
 			});
+			
+		return deferred;
 	}
 
 	function isArray(array) {
